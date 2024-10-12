@@ -154,7 +154,10 @@ function integersToMessage(integers: bigint[]): Message {
       const amount = integers.shift();
       const output = integers.shift();
       message.edicts.push({
-        id: new RuneId(Number(height), Number(txIndex)),
+        id: {
+          block: height,
+          index: txIndex,
+        },
         amount,
         output,
       });

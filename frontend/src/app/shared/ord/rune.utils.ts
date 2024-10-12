@@ -201,9 +201,9 @@ function messageToRunestone(message: Message): Runestone {
   if (flags & Flag.ETCHING) {
     const hasTerms = (flags & Flag.TERMS) > 0n;
     const isTurbo = (flags & Flag.TURBO) > 0n;
-    const name = parseRuneName(message.fields[Tag.Rune]?.[0] ?? 0n);
+    const name = parseRuneName(message.fields[Tag.Rune][0]);
     etching = {
-      divisibility: Number(message.fields[Tag.Divisibility]?.[0] ?? 0n),
+      divisibility: Number(message.fields[Tag.Divisibility][0]),
       premine: message.fields[Tag.Premine]?.[0],
       symbol: message.fields[Tag.Symbol]?.[0] ? String.fromCodePoint(Number(message.fields[Tag.Symbol][0])) : '¤',
       terms: hasTerms ? {
